@@ -2,6 +2,10 @@ import random
 
 
 def tic_tac():
+    """
+    This a tic-tac-toe game that randomly deteremines who goes first.
+    The function will notify who the winner is and when there is a draw.
+    """
     game = "begin"
     position_dict = {
         "a": 1,
