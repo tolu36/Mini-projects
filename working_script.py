@@ -79,6 +79,7 @@ def tic_tac():
 
                 position = list(position_dict.keys())[current_player - 1]
                 disp, position_dict = display(game, position_dict, player, position)
+                print("\n" * 100)
                 print(disp)
 
                 if len(moves) > 4:
