@@ -1,4 +1,14 @@
 import random
+from program import my_func
+from mymainpackage.some_main_script import report_main
+from mymainpackage.mysubpackages.mysubscript import sub_report
+import pdb
+
+pdb.set_trace()
+
+my_func()
+report_main()
+sub_report()
 
 
 def tic_tac():
