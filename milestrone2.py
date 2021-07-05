@@ -96,7 +96,6 @@ class BJ_Account:
     def deposit(self, num):
         try:
             self.balance = self.balance + num
-            return f"You won ${num}, and your new balance is {self.balance}."
         except:
             return "Please enter a valid integer amount."
 
@@ -170,12 +169,10 @@ new_deck.shuffle()
 
 game_on = True
 
-adj_ace = 0
-
 round_num = 0
-while game_on or len(new_deck.all_cards) != 0:
+while game_on and len(new_deck.all_cards) != 0:
     round_num += 1
-    adj_ace = 0
+    adj_ace=0
     print(f"Round {round_num}.")
     print(player_one_bal)
     player_bet = bet()
@@ -186,8 +183,8 @@ while game_on or len(new_deck.all_cards) != 0:
     if player_one.all_cards[-1].rank == "Ace" and ace_value() == 1:
         adj_ace = 10
     print(f"{player_one.name}'s sum amount is {player_one.sum_value()-adj_ace}.")
-
-    while (player_one.sum_value() - adj_ace) < 22 or len(new_deck.all_cards) != 0:
+    
+    while (player_one.sum_value() - adj_ace) < 22 and len(new_deck.all_cards) != 0:
         pl2 = "No"
         if deal() == "Yes":
             player_one.add_cards(new_deck.deal_one())
@@ -211,10 +208,16 @@ while game_on or len(new_deck.all_cards) != 0:
                     break
             elif (player_one.sum_value() - adj_ace) == 21:
                 print(f"{player_one.name} you won!")
-                player_one_bal.deposit((player_bet * 2))
+                player_one_bal.deposit(player_bet*2)
                 print(player_one_bal)
                 if keep_playing() == "Yes":
                     player_one.clear_hand()
+                    break
+                else:
+                    print("Game over.")
+                    player_one.clear_hand()
+                    print(player_one_bal)
+                    game_on = False
                     break
         else:
             pl2 = "Yes"
@@ -222,13 +225,13 @@ while game_on or len(new_deck.all_cards) != 0:
     if pl2 == "Yes":
         player_two.add_cards(new_deck.deal_one())
         print(f"House deals {player_two.all_cards[-1]}")
-        while player_two.sum_value() < 22 or len(new_deck.all_cards) != 0:
+        while player_two.sum_value() < 22 and len(new_deck.all_cards) != 0:
             player_two.add_cards(new_deck.deal_one())
             print(f"House deals {player_two.all_cards[-1]}")
             print(f"{player_two.name}'s sum amount is {player_two.sum_value()}.")
             if player_two.sum_value() > 21:
                 print(f"{player_one.name} you won!")
-                player_one_bal.deposit((player_bet * 2))
+                player_one_bal.deposit(player_bet*2)
                 print(player_one_bal)
                 if keep_playing() == "Yes":
                     player_two.clear_hand()
@@ -272,7 +275,7 @@ while game_on or len(new_deck.all_cards) != 0:
                         break
                 else:
                     print(f"{player_one.name} you won!")
-                    player_one_bal.deposit((player_bet * 2))
+                    player_one_bal.deposit(player_bet*2)
                     print(player_one_bal)
                     if keep_playing() == "Yes":
                         player_two.clear_hand()
