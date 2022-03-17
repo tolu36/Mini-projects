@@ -104,7 +104,8 @@ def tic_tac():
                     if len(moves) == 9:
                         return "Draw!"
 
-
+with open('practic.txt','w+') as f:
+    f.write('testing testing testing')
 def display(
     game,
     position_dict,

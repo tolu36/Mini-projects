@@ -1,4 +1,13 @@
 {
     "python.terminal.executeInFileDir": true,
     "jupyter.jupyterServerType": "local",
+    "cSpell.words": [
+        "arange",
+        "cmap",
+        "knnreg",
+        "mpatches",
+        "pcolormesh",
+        "xlim",
+        "ylim"
+    ],
 }
