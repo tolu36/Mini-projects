@@ -1,1 +1,4 @@
 Python_workbook.ipynb
+.vscode/*
+miscellaneous/
+__pycache__/
